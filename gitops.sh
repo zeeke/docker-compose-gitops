@@ -1,8 +1,12 @@
 #!/bin/sh
 
+if [ ! -d .git ]; then
+    echo "Error: Current directory (`pwd`) is not a git repository!"
+    exit 2
+fi
+
 while true
 do
-
     git fetch
     LOCAL=$(git rev-parse HEAD)
     REMOTE=$(git rev-parse @{u})
